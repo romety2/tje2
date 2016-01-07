@@ -5,8 +5,8 @@
         <div class="header clearfix">
           <ul class="nav nav-pills pull-right">
 	  	<li role="presentation"><a href=${pageContext.request.contextPath}>Strona główna</a></li>
-            	<li role="presentation"><a href="#">Pogrzeby</a></li>
-            	<li role="presentation"><a href="#">Trumny</a></li>
+            	<li role="presentation"><a href="${pageContext.request.contextPath}/pogrzeby.jsp">Pogrzeby</a></li>
+            	<li role="presentation"><a href="${pageContext.request.contextPath}/trumny.jsp">Trumny</a></li>
           </ul>
 	  <h4 class="text-muted">Zakład pogrzebowy</h4>
         </div>
