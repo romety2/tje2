@@ -48,7 +48,7 @@ public class Pogrzeb {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_religia", nullable = false)
+	@JoinColumn(name = "id_trumna", nullable = false)
 	public Trumna getTrumna() {
 	return trumna;
 	}

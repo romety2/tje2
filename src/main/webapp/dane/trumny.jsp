@@ -4,11 +4,12 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    	<jsp:include page="strony/head.jsp" />
+    	<jsp:include page="../elementy/head.jsp" />
 </head>
 
 <body>
-<jsp:include page="strony/menu.jsp" />
+
+<jsp:include page="../elementy/menu.jsp" />
 
 <div class="container">
     <div class="row">
@@ -29,26 +30,25 @@
                     </tr>
                     <c:forEach var="trumna" items="${trumny}" varStatus="loopCounter">
                         <tr>
-                            <td>${pogrzeb.rodzaj}</td>
-                            <td>${pogrzeb.cena}</td>
-                            <td>${pogrzeb.ilosc}</td>
+                            <td>${trumna.rodzaj}</td>
+                            <td>${trumna.cena}</td>
+                            <td>${trumna.ilosc}</td>
                             <td>
-                                <a href="pogladP/${message.id}">
+                                <a href="trumny/poglad/${trumna.id}">
                                     Podgląd
                                 </a>
                                 |
-                                <a href="edytujP/${message.id}">
+                                <a href="trumny/edytuj/${trumna.id}">
                                     Edytuj
                                 </a>
                                 |
-                                <a href="usunPogrzeb/${message.id}">
+                                <a href="usunPogrzeb/${trumna.id}">
                                     Usuń
                                 </a>
                             </td>
                         </tr>
                     </c:forEach>
                 </table>
-
             </c:when>
             <c:otherwise>
                 <div class="well">Brak trumien!</div>
@@ -56,9 +56,9 @@
         </c:choose>
     </div>
 
-    <jsp:include page="strony/stopka.jsp" />
+    <jsp:include page="../elementy/stopka.jsp" />
 </div>
 
-<jsp:include page="strony/skrypty.jsp" />
+<jsp:include page="../elementy/skrypty.jsp" />
 </body>
 </html>

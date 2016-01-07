@@ -4,11 +4,11 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    	<jsp:include page="strony/head.jsp" />
+    	<jsp:include page="elementy/head.jsp" />
 </head>
 
 <body>
-<jsp:include page="strony/menu.jsp" />
+<jsp:include page="elementy/menu.jsp" />
 
 <div class="container">
     <div class="row">
@@ -56,9 +56,9 @@
         </c:choose>
     </div>
 
-    <jsp:include page="strony/stopka.jsp" />
+    <jsp:include page="elementy/stopka.jsp" />
 </div>
 
-<jsp:include page="strony/skrypty.jsp" />
+<jsp:include page="elementy/skrypty.jsp" />
 </body>
 </html>

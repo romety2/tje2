@@ -18,20 +18,20 @@ import javax.ws.rs.Produces;
 
 
 @Stateless
-@Path("rest")
+@Path("/pogrzeb")
 public class PogrzebResource{
     @EJB
     private PogrzebManager pm;
 
     @GET
-    @Path("/pogrzeby")
+    @Path("/dajWszystkie")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Pogrzeb> dajPogrzeby() {
     	 return pm.dajWszystkie();
     }
 
     @DELETE
-    @Path("/usunPogrzeb")
+    @Path("/usun")
     public Response usunPogrzeb(@FormParam("id") long id)
     {
         Pogrzeb pogrzeb = new Pogrzeb();

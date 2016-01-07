@@ -17,20 +17,20 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 @Stateless
-@Path("rest")
+@Path("/trumna")
 public class TrumnaResource{
     @EJB
     private TrumnaManager tm;
 
     @GET
-    @Path("/trumny")
+    @Path("/dajWszystkie")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Trumna> dajTrumny() {
     	 return tm.dajWszystkie();
     }
 
     @DELETE
-    @Path("/usunTrumne")
+    @Path("/usun")
     public Response usunTrumne(@FormParam("id") long id)
     {
         Trumna trumna = new Trumna();

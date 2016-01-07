@@ -4,11 +4,12 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    	<jsp:include page="strony/head.jsp" />
+    	<jsp:include page="../elementy/head.jsp" />
 </head>
 
 <body>
-<jsp:include page="strony/menu.jsp" />
+
+<jsp:include page="../elementy/menu.jsp" />
 
 <div class="container">
     <div class="row">
@@ -35,22 +36,21 @@
                             <td>${pogrzeb.cena}</td>
                             <td>${pogrzeb.opis}</td>
                             <td>
-                                <a href="pogladP/${message.id}">
+                                <a href="pogrzeby/poglad/${pogrzeb.id}">
                                     Podgląd
                                 </a>
                                 |
-                                <a href="edytujP/${message.id}">
+                                <a href="pogrzeby/edytuj/${pogrzeb.id}">
                                     Edytuj
                                 </a>
                                 |
-                                <a href="usunPogrzeb/${message.id}">
+                                <a href="usunPogrzeb/${pogrzeb.id}">
                                     Usuń
                                 </a>
                             </td>
                         </tr>
                     </c:forEach>
                 </table>
-
             </c:when>
             <c:otherwise>
                 <div class="well">Brak pogbrzebów!</div>
@@ -58,9 +58,9 @@
         </c:choose>
     </div>
 
-    <jsp:include page="strony/stopka.jsp" />
+    <jsp:include page="../elementy/stopka.jsp" />
 </div>
 
-<jsp:include page="strony/skrypty.jsp" />
+<jsp:include page="../elementy/skrypty.jsp" />
 </body>
 </html>
