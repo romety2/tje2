@@ -4,7 +4,7 @@
     <div class="container">
         <div class="header clearfix">
           <ul class="nav nav-pills pull-right">
-	  	<li class="text-muted"><a href=${pageContext.request.contextPath}>Strona główna</a></li>
+	  	<li role="presentation"><a href=${pageContext.request.contextPath}>Strona główna</a></li>
             	<li role="presentation"><a href="#">Pogrzeby</a></li>
             	<li role="presentation"><a href="#">Trumny</a></li>
           </ul>
