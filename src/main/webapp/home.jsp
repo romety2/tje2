@@ -5,6 +5,7 @@
 <html lang="pl">
 <head>
     	<jsp:include page="elementy/head.jsp" />
+	<jsp:include page="elementy/skrypty.jsp" />
 </head>
 
 <body>

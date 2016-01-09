@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    	<jsp:include page="elementy/head.jsp" />
+    	<jsp:include page="../elementy/head.jsp" />
+	<jsp:include page="../elementy/skrypty.jsp" />
 </head>
 
 <body>
@@ -58,9 +59,7 @@
         </c:choose>
     </div>
 
-    <jsp:include page="elementy/stopka.jsp" />
+    <jsp:include page="../elementy/stopka.jsp" />
 </div>
-
-<jsp:include page="elementy/skrypty.jsp" />
 </body>
 </html>

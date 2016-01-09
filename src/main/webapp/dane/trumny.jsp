@@ -5,6 +5,7 @@
 <html lang="pl">
 <head>
     	<jsp:include page="../elementy/head.jsp" />
+	<jsp:include page="../elementy/skrypty.jsp" />
 </head>
 
 <body>
@@ -15,7 +16,7 @@
     <div class="row">
         <h1 class="text-center">Trumny</h1>
         <div>
-        	<button type="submit" class="btn btn-success">Dodaj</button>
+        	<a href="trumny/dodaj.jsp" class="btn btn-success" role="button">Dodaj</a>
          </div>
         <br/>
 
