@@ -15,26 +15,29 @@ public class TrumnaManager {
 	EntityManager em;
 
 	public void dodaj(Trumna trumna) {
-	trumna.setId(null);
-	em.persist(trumna);
+		trumna.setId(null);
+		em.persist(trumna);
 	}
 
 	public void edytuj(Trumna trumna, String rodzaj, Double cena, Integer ilosc) {
-	trumna = em.find(Trumna.class, trumna.getId());
-	trumna.setRodzaj(rodzaj);
-	trumna.setCena(cena);
-	trumna.setIlosc(ilosc);
-	em.merge(trumna);
+		trumna = em.find(Trumna.class, trumna.getId());
+		trumna.setRodzaj(rodzaj);
+		trumna.setCena(cena);
+		trumna.setIlosc(ilosc);
+		em.merge(trumna);
 	}
 
 	public void usun(Trumna trumna) {
-	trumna = em.find(Trumna.class, trumna.getId());
-	em.remove(trumna);
+		trumna = em.find(Trumna.class, trumna.getId());
+		em.remove(trumna);
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Trumna> dajWszystkie() {
-	return em.createNamedQuery("trumna.wszystkie").getResultList();
+		return em.createNamedQuery("trumna.wszystkie").getResultList();
+	}
+
+	public List<Trumna> dajDostepne() {
+		return em.createNamedQuery("trumna.dostepne").getResultList();
 	}
 }
 

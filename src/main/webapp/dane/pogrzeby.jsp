@@ -16,7 +16,7 @@
     <div class="row">
         <h1 class="text-center">Pogrzeby</h1>
         <div>
-        	<a href="pogrzeby/dodaj.jsp" class="btn btn-success" role="button">Dodaj</a>
+        	<a href="${pageContext.request.contextPath}/DodajPogrzeb" class="btn btn-success" role="button">Dodaj</a>
          </div>
         <br/>
 

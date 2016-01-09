@@ -16,7 +16,7 @@
     <div class="row">
         <h1 class="text-center">Trumny</h1>
         <div>
-        	<a href="trumny/dodaj.jsp" class="btn btn-success" role="button">Dodaj</a>
+        	<a href="${pageContext.request.contextPath}/DodajTrumne" class="btn btn-success" role="button">Dodaj</a>
          </div>
         <br/>
 

@@ -30,13 +30,13 @@
     <div class="row">
         <h1 class="text-center">Dodaj pogrzeb</h1>
 
-            	<form action="add" data-toggle="validator" method="post" 			class="form-horizontal">
+            	<form action="add" data-toggle="validator" method="post" class="form-horizontal">
 
 		        <div class="form-group">
 		            <label for="data" class="col-sm-2 control-label">Data:</label>
 
 		            <div class="col-sm-10">
-		                <input type="date" name="data" id="data" class="form-control" 				placeholder="rrrr-mm-dd" required/>
+		                <input type="date" name="data" id="data" class="form-control" placeholder="rrrr-mm-dd" required/>
 		            </div>
 		        </div>
 
@@ -44,11 +44,10 @@
 		         	<label for="trumna" class="col-sm-2 control-label">Trumna:</label>
 				<div class="col-sm-10">
 				         <select type="text" name="trumna" id="trumna" class="form-control" required>
-				          	<option>qq</option>
-						<option>dd</option>
-						 <option>aaę</option>
-						  <option>tr</option>
-				          </select>
+				     <c:forEach var="trumnaFK" items="${trumnyDostepne}" varStatus="loopCounter">
+						    <option>${trumnaFK.rodzaj}</option>
+					    </c:forEach>
+					</select>
 				</div>
 		        </div>
 

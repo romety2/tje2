@@ -19,7 +19,7 @@ import javax.validation.constraints.Size;
 @Entity
 @NamedQueries({ 
 	@NamedQuery(name = "trumna.wszystkie", query = "Select t from Trumna t"),
-	@NamedQuery(name = "trumna.dostepne", query = "Select t from Trumna t where t.ilosc <> 0")
+	@NamedQuery(name = "trumna.dostepne", query = "Select t from Trumna t where t.ilosc > 0 order by t.rodzaj")
 })
 public class Trumna {
 	
