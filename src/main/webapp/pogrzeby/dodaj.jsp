@@ -30,50 +30,49 @@
     <div class="row">
         <h1 class="text-center">Dodaj pogrzeb</h1>
 
-            <form action="add" method="post" class="form-horizontal">
-                <div class="form-group">
-                    <label for="data" class="col-sm-2 control-label">Data:</label>
+            	<form action="add" data-toggle="validator" method="post" 			class="form-horizontal">
 
-                    <div class="col-sm-10">
-                        <input type="date" name="data" id="data" class="form-control"/>
-                    </div>
-                </div>
+		        <div class="form-group">
+		            <label for="data" class="col-sm-2 control-label">Data:</label>
 
-                <div class="form-group">
-                 	<label for="trumna" class="col-sm-2 control-label">Trumna:</label>
-			<div class="col-sm-10">
-		                 <select type="text" name="trumna" id="trumna" class="form-control">
-		                  	<option>qq</option>
-				        <option>dd</option>
-				         <option>aaę</option>
-				          <option>tr</option>
-		                  </select>
-			</div>
-                </div>
+		            <div class="col-sm-10">
+		                <input type="date" name="data" id="data" class="form-control" 				placeholder="rrrr-mm-dd" required/>
+		            </div>
+		        </div>
 
-                <div class="form-group">
-                    	<label for="cena" class="col-sm-2 control-label" >Cena:</label>
+		        <div class="form-group">
+		         	<label for="trumna" class="col-sm-2 control-label">Trumna:</label>
+				<div class="col-sm-10">
+				         <select type="text" name="trumna" id="trumna" class="form-control" required>
+				          	<option>qq</option>
+						<option>dd</option>
+						 <option>aaę</option>
+						  <option>tr</option>
+				          </select>
+				</div>
+		        </div>
 
-                    	<div class="col-sm-10">
-                        	<input type="text" name="cena" id="cena" class="form-control"
-				placeholder="double" data-error="Bruh, that email address is invalid"/>
-                    	</div>
-                </div>
+		        <div class="form-group">
+		            	<label for="cena" class="col-sm-2 control-label" >Cena:</label>
 
-                <div class="form-group">
-                   	<label for="opis" class="col-sm-2 control-label">Opis:</label>
+		            	<div class="col-sm-10">
+		                	<input type="text" pattern="^[0-9]+$|^[0-9]+[.][0-9]+$" name="cena" id="cena" class="form-control" placeholder="0.0" required>
+		            	</div>
+		        </div>
 
-                    	<div class="col-sm-10">
-                        	<input type="text" name="opis" id="opis" class="form-control"/>
-                    	</div>
-                </div>
-                <div class="form-group">
-                    	<div class="text-center">
-                        	<button type="submit" class="btn btn-success">Dodaj</button>
+		        <div class="form-group">
+		           	<label for="opis" class="col-sm-2 control-label">Opis:</label>
+
+		            	<div class="col-sm-10">
+		                	<input type="text" name="opis" id="opis" class="form-control"/>
+		            	</div>
+		        </div>
+		        <div class="form-group text-center">
+		                <button type="submit" class="btn btn-success">Dodaj</button>
 				<a href="../Pogrzeby" class="btn btn-default" role="button">Wróć</a>
-	 	    	</div>
-                </div>
-            </form>
+		        </div>
+
+            	</form>
 
     <jsp:include page="../elementy/stopka.jsp" />
 </div>
