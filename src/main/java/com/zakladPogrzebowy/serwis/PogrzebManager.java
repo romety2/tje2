@@ -25,6 +25,8 @@ public class PogrzebManager {
 		em.persist(pogrzeb);
 		Trumna trumna = em.find(Trumna.class, pogrzeb.getTrumna().getId());
 		trumna.getPogrzeby().add(pogrzeb);
+		trumna.setIlosc(trumna.getIlosc()-1);
+		em.merge(trumna);
 	}
 
 	public void edytuj(Pogrzeb pogrzeb, Date data, Trumna trumna, Double cena, String opis) {
@@ -42,6 +44,10 @@ public class PogrzebManager {
 		pogrzeb.setOpis(opis);
 		tr.getPogrzeby().set(i, pogrzeb);
 		em.merge(pogrzeb);
+		tr.setIlosc(tr.getIlosc()+1);
+		em.merge(tr);
+		trumna.setIlosc(trumna.getIlosc()-1);
+		em.merge(trumna);
 	}
 
 	public void usun(Pogrzeb pogrzeb) {
@@ -49,6 +55,8 @@ public class PogrzebManager {
 		Trumna tr = em.find(Trumna.class, pogrzeb.getTrumna().getId());
 		tr.getPogrzeby().remove(pogrzeb);
 		em.remove(pogrzeb);
+		tr.setIlosc(tr.getIlosc()+1);
+		em.merge(tr);
 	}
 
 	public List<Pogrzeb> dajWszystkie() {
