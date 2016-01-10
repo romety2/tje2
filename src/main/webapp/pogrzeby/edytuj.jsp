@@ -6,60 +6,81 @@
 <head>
     	<jsp:include page="../elementy/head.jsp" />
 	<jsp:include page="../elementy/skrypty.jsp" />
+	<script>
+		$(function()
+			{
+				$( "#data" ).datepicker
+				(
+					{
+						changeMonth: true,
+						changeYear: true,
+						dateFormat: "yy-mm-dd",
+					},
+					$.datepicker.regional[ "pl" ]
+				);
+			}
+		);
+	</script>
 </head>
 
 <body>
-<jsp:include page="elementy/menu.jsp" />
+<jsp:include page="../elementy/menu.jsp" />
 
 <div class="container">
     <div class="row">
-        <h1 class="text-center">Pogrzeby</h1>
-        <div>
-        	<button type="submit" class="btn btn-success">Dodaj</button>
-         </div>
-        <br/>
+        <h1 class="text-center">Edytuj pogrzeb</h1>
+            	<form action="${pageContext.request.contextPath}/EdytujPogrzeb/${pogrzebEdytowany.getId()}"" data-toggle="validator" method="post" class="form-horizontal">
 
-        <c:choose>
-            <c:when test="${pogrzeby.size() > 0}">
-                <table class="table table-striped">
-                    <tr>
-                        <th>Data</th>
-                        <th>Trumna</th>
-                        <th>Cena</th>
-                        <th>Opis</th>
-                        <th></th>
-                    </tr>
-                    <c:forEach var="pogrzeb" items="${pogrzeby}" varStatus="loopCounter">
-                        <tr>
-                            <td>${pogrzeb.data}</td>
-                            <td>${pogrzeb.trumna.rodzaj}</td>
-                            <td>${pogrzeb.cena}</td>
-                            <td>${pogrzeb.opis}</td>
-                            <td>
-                                <a href="pogladP/${message.id}">
-                                    Podgląd
-                                </a>
-                                |
-                                <a href="edytujP/${message.id}">
-                                    Edytuj
-                                </a>
-                                |
-                                <a href="usunPogrzeb/${message.id}">
-                                    Usuń
-                                </a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </table>
+		        <div class="form-group">
+		            <label for="data" class="col-sm-2 control-label">Data:</label>
 
-            </c:when>
-            <c:otherwise>
-                <div class="well">Brak pogbrzebów!</div>
-            </c:otherwise>
-        </c:choose>
-    </div>
+		            <div class="col-sm-10">
+		                <input type="date" name="data" id="data" class="form-control" value="${pogrzebEdytowany.getData()}" placeholder="rrrr-mm-dd" required>
+		            </div>
+		        </div>
 
-    <jsp:include page="elementy/stopka.jsp" />
+		        <div class="form-group">
+		         	<label for="trumna" class="col-sm-2 control-label">Trumna:</label>
+				<div class="col-sm-10">
+				         <select type="text" name="trumna" id="trumna" class="form-control" required>
+				     		<c:forEach var="trumnaFK" items="${trumnyDostepne}" varStatus="loopCounter">
+						<c:choose>
+						    <c:when test="${trumnaFK.id == pogrzebEdytowany.getTrumna().getId()}">
+						    	<option value="${trumnaFK.id}" selected="selected">${trumnaFK.rodzaj}</option>
+						    </c:when>
+						    <c:otherwise>
+							<option value="${trumnaFK.id}">${trumnaFK.rodzaj}</option>
+							<br />
+						    </c:otherwise>
+						</c:choose>
+					</c:forEach>
+					</select>
+				</div>
+		        </div>
+
+		        <div class="form-group">
+		            	<label for="cena" class="col-sm-2 control-label" >Cena:</label>
+
+		            	<div class="col-sm-10">
+		                	<input type="text" pattern="^[0-9]+$|^[0-9]+[.][0-9]+$" name="cena" id="cena" class="form-control" value="${pogrzebEdytowany.getCena()}" placeholder="0.0" required>
+		            	</div>
+		        </div>
+
+		        <div class="form-group">
+		           	<label for="opis" class="col-sm-2 control-label">Opis:</label>
+
+		            	<div class="col-sm-10">
+		                	<input type="text" name="opis" id="opis" class="form-control" value="${pogrzebEdytowany.getOpis()}">
+		            	</div>
+		        </div>
+		        <div class="form-group text-center">
+		                <button type="submit" class="btn btn-primary">Edytuj</button>
+				<a href="${pageContext.request.contextPath}/Pogrzeby" class="btn btn-default" role="button">Wróć</a>
+		        </div>
+
+            	</form>
+
+    <jsp:include page="../elementy/stopka.jsp" />
 </div>
 </body>
 </html>

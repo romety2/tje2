@@ -9,55 +9,42 @@
 </head>
 
 <body>
-<jsp:include page="elementy/menu.jsp" />
+<jsp:include page="../elementy/menu.jsp" />
 
 <div class="container">
     <div class="row">
-        <h1 class="text-center">Pogrzeby</h1>
-        <div>
-        	<button type="submit" class="btn btn-success">Dodaj</button>
-         </div>
-        <br/>
+        <h1 class="text-center">Edytuj trumnę</h1>
 
-        <c:choose>
-            <c:when test="${pogrzeby.size() > 0}">
-                <table class="table table-striped">
-                    <tr>
-                        <th>Data</th>
-                        <th>Trumna</th>
-                        <th>Cena</th>
-                        <th>Opis</th>
-                        <th></th>
-                    </tr>
-                    <c:forEach var="pogrzeb" items="${pogrzeby}" varStatus="loopCounter">
-                        <tr>
-                            <td>${pogrzeb.data}</td>
-                            <td>${pogrzeb.trumna.rodzaj}</td>
-                            <td>${pogrzeb.cena}</td>
-                            <td>${pogrzeb.opis}</td>
-                            <td>
-                                <a href="pogladP/${message.id}">
-                                    Podgląd
-                                </a>
-                                |
-                                <a href="edytujP/${message.id}">
-                                    Edytuj
-                                </a>
-                                |
-                                <a href="usunPogrzeb/${message.id}">
-                                    Usuń
-                                </a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </table>
+        	<form action="${pageContext.request.contextPath}/EdytujTrumne/${trumnaEdytowana.getId()}" data-toggle="validator" method="post" class="form-horizontal">
+		        <div class="form-group">
+		            <label for="rodzaj" class="col-sm-2 control-label">Rodzaj:</label>
 
-            </c:when>
-            <c:otherwise>
-                <div class="well">Brak pogbrzebów!</div>
-            </c:otherwise>
-        </c:choose>
-    </div>
+		            <div class="col-sm-10">
+		                <input type="text" name="rodzaj" id="rodzaj" class="form-control" value="${trumnaEdytowana.getRodzaj()}" required>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label for="cena" class="col-sm-2 control-label">Cena:</label>
+
+		            <div class="col-sm-10">
+		                <input type="text" name="cena" id="cena" pattern="^[0-9]+$|^[0-9]+[.][0-9]+$" class="form-control"  placeholder="0.0" value="${trumnaEdytowana.getCena()}" required>
+		            </div>
+		        </div>
+
+		        <div class="form-group">
+		            <label for="ilosc" class="col-sm-2 control-label">Ilość:</label>
+
+		            <div class="col-sm-10">
+		                <input type="text" name="ilosc" id="ilosc" pattern="^[0-9]+$" class="form-control" placeholder="0" value="${trumnaEdytowana.getIlosc()}" required>
+		            </div>
+		        </div>
+		        <div class="form-group text-center">
+		                <button type="submit" class="btn btn-primary">Edytuj</button>
+				<a href="${pageContext.request.contextPath}/Trumny" class="btn btn-default" role="button">Wróć</a>
+		 	    </div>
+		        </div>
+            	</form>
 
     <jsp:include page="../elementy/stopka.jsp" />
 </div>

@@ -17,8 +17,8 @@ import com.zakladPogrzebowy.domena.Trumna;
 import com.zakladPogrzebowy.serwis.PogrzebManager;
 import com.zakladPogrzebowy.serwis.TrumnaManager;
 
-@WebServlet(urlPatterns = "/DodajPogrzeb")
-public class DodajPogrzebServlet extends HttpServlet{
+@WebServlet(urlPatterns = "/EdytujPogrzeb/*")
+public class EdytujPogrzebServlet extends HttpServlet{
     @EJB
     private PogrzebManager pm;
     @EJB
@@ -26,27 +26,27 @@ public class DodajPogrzebServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	String link = request.getPathInfo();
+        request.setAttribute("pogrzebEdytowany", pm.pobierzPoId(Long.parseLong(link.substring(link.lastIndexOf("/") + 1, link.length()))));
         request.setAttribute("trumnyDostepne", tm.dajDostepne());
-        request.getRequestDispatcher("/pogrzeby/dodaj.jsp").forward(request, response);
+        request.getRequestDispatcher("/pogrzeby/edytuj.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Pogrzeb pogrzeb = new Pogrzeb();
-
+	String link = request.getPathInfo();
 	DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+	pogrzeb =  pm.pobierzPoId(Long.parseLong(link.substring(link.lastIndexOf("/") + 1, link.length())));
 
 	try
 	{
-        	pogrzeb.setData(format.parse(request.getParameter("data")));
-	}
+        pm.edytuj(pogrzeb, format.parse(request.getParameter("data")), tm.pobierzPoId(Long.parseLong(request.getParameter("trumna"))),Double.parseDouble(request.getParameter("cena")),request.getParameter("opis"));
+	}	
 	catch(Exception e)
 	{
 	}
-        pogrzeb.setTrumna(tm.pobierzPoId(Long.parseLong(request.getParameter("trumna"))));
-        pogrzeb.setCena(Double.parseDouble(request.getParameter("cena")));
-        pogrzeb.setOpis(request.getParameter("opis"));
-        pm.dodaj(pogrzeb);
 
  	response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/Pogrzeby"));
     }

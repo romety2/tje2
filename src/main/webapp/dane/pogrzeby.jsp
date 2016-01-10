@@ -37,15 +37,13 @@
                             <td>${pogrzeb.getCena()}</td>
                             <td>${pogrzeb.getOpis()}</td>
                             <td>
-                                <a href="pogrzeby/poglad/${pogrzeb.id}">
+                                <a href="pogrzeby/poglad/${pogrzeb.getId()}">
                                     Podgląd
                                 </a>
-                                |
-                                <a href="pogrzeby/edytuj/${pogrzeb.id}">
-                                    Edytuj
+                                <a href="pogrzeby/edytuj/${pogrzeb.getId()}">
+					<a href="${pageContext.request.contextPath}/EdytujPogrzeb/${pogrzeb.getId()}" class="btn btn-primary" role="button">Edytuj</a>
                                 </a>
-                                |
-                                <a href="usunPogrzeb/${pogrzeb.id}">
+                                <a href="usunPogrzeb/${pogrzeb.getId()}">
                                     Usuń
                                 </a>
                             </td>

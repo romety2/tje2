@@ -35,15 +35,11 @@
                             <td>${trumna.getCena()}</td>
                             <td>${trumna.getIlosc()}</td>
                             <td>
-                                <a href="trumny/poglad/${trumna.id}">
+                                <a href="trumny/poglad/${trumna.getId()}">
                                     Podgląd
                                 </a>
-                                |
-                                <a href="trumny/edytuj/${trumna.id}">
-                                    Edytuj
-                                </a>
-                                |
-                                <a href="usunPogrzeb/${trumna.id}">
+					<a href="${pageContext.request.contextPath}/EdytujTrumne/${trumna.getId()}"" class="btn btn-primary" role="button">Edytuj</a>
+                                <a href="usunPogrzeb/${trumna.getId()}">
                                     Usuń
                                 </a>
                             </td>

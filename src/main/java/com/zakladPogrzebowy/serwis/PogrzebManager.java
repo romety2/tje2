@@ -27,7 +27,7 @@ public class PogrzebManager {
 		trumna.getPogrzeby().add(pogrzeb);
 	}
 
-	public void edytuj(Pogrzeb pogrzeb, Trumna trumna, Date data, Double cena, String opis) {
+	public void edytuj(Pogrzeb pogrzeb, Date data, Trumna trumna, Double cena, String opis) {
 		pogrzeb = em.find(Pogrzeb.class, pogrzeb.getId());
 		Trumna tr = em.find(Trumna.class, pogrzeb.getTrumna().getId());
 		int i = 0;
