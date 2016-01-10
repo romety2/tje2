@@ -31,9 +31,9 @@
                     </tr>
                     <c:forEach var="trumna" items="${trumny}" varStatus="loopCounter">
                         <tr>
-                            <td>${trumna.rodzaj}</td>
-                            <td>${trumna.cena}</td>
-                            <td>${trumna.ilosc}</td>
+                            <td>${trumna.getRodzaj()}</td>
+                            <td>${trumna.getCena()}</td>
+                            <td>${trumna.getIlosc()}</td>
                             <td>
                                 <a href="trumny/poglad/${trumna.id}">
                                     Podgląd

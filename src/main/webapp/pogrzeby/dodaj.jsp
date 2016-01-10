@@ -29,8 +29,7 @@
 <div class="container">
     <div class="row">
         <h1 class="text-center">Dodaj pogrzeb</h1>
-
-            	<form action="add" data-toggle="validator" method="post" class="form-horizontal">
+            	<form action="${pageContext.request.contextPath}/DodajPogrzeb" data-toggle="validator" method="post" class="form-horizontal">
 
 		        <div class="form-group">
 		            <label for="data" class="col-sm-2 control-label">Data:</label>
@@ -44,9 +43,9 @@
 		         	<label for="trumna" class="col-sm-2 control-label">Trumna:</label>
 				<div class="col-sm-10">
 				         <select type="text" name="trumna" id="trumna" class="form-control" required>
-				     <c:forEach var="trumnaFK" items="${trumnyDostepne}" varStatus="loopCounter">
-						    <option>${trumnaFK.rodzaj}</option>
-					    </c:forEach>
+				     		<c:forEach var="trumnaFK" items="${trumnyDostepne}" varStatus="loopCounter">
+						    	<option value="${trumnaFK.id}">${trumnaFK.rodzaj}</option>
+					    	</c:forEach>
 					</select>
 				</div>
 		        </div>
@@ -68,7 +67,7 @@
 		        </div>
 		        <div class="form-group text-center">
 		                <button type="submit" class="btn btn-success">Dodaj</button>
-				<a href="../Pogrzeby" class="btn btn-default" role="button">Wróć</a>
+				<a href="${pageContext.request.contextPath}/Pogrzeby" class="btn btn-default" role="button">Wróć</a>
 		        </div>
 
             	</form>

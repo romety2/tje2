@@ -47,7 +47,7 @@ public class Pogrzeb {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_trumna", nullable = false)
 	public Trumna getTrumna() {
 	return trumna;

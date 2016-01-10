@@ -16,9 +16,15 @@ public class PogrzebManager {
 	@PersistenceContext
 	EntityManager em;
 
+	public Pogrzeb pobierzPoId(Long id) {
+		return em.find(Pogrzeb.class, id);
+	}
+
 	public void dodaj(Pogrzeb pogrzeb) {
 		pogrzeb.setId(null);
 		em.persist(pogrzeb);
+		Trumna trumna = em.find(Trumna.class, pogrzeb.getTrumna().getId());
+		trumna.getPogrzeby().add(pogrzeb);
 	}
 
 	public void edytuj(Pogrzeb pogrzeb, Trumna trumna, Date data, Double cena, String opis) {

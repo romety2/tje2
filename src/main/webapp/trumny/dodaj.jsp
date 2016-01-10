@@ -15,9 +15,9 @@
     <div class="row">
         <h1 class="text-center">Dodaj trumnę</h1>
 
-        	<form action="add" data-toggle="validator" method="post" class="form-horizontal">
+        	<form action="${pageContext.request.contextPath}/DodajTrumne" data-toggle="validator" method="post" class="form-horizontal">
 		        <div class="form-group">
-		            <label for="message" class="col-sm-2 control-label">Rodzaj:</label>
+		            <label for="rodzaj" class="col-sm-2 control-label">Rodzaj:</label>
 
 		            <div class="col-sm-10">
 		                <input type="text" name="rodzaj" id="rodzaj" class="form-control" required>
@@ -25,7 +25,7 @@
 		        </div>
 
 		        <div class="form-group">
-		            <label for="author" class="col-sm-2 control-label">Cena:</label>
+		            <label for="cena" class="col-sm-2 control-label">Cena:</label>
 
 		            <div class="col-sm-10">
 		                <input type="text" name="cena" id="cena" pattern="^[0-9]+$|^[0-9]+[.][0-9]+$" class="form-control"  placeholder="0.0" required>
@@ -33,7 +33,7 @@
 		        </div>
 
 		        <div class="form-group">
-		            <label for="author" class="col-sm-2 control-label">Ilość:</label>
+		            <label for="ilosc" class="col-sm-2 control-label">Ilość:</label>
 
 		            <div class="col-sm-10">
 		                <input type="text" name="ilosc" id="ilosc" pattern="^[0-9]+$" class="form-control" placeholder="0" required>
@@ -41,7 +41,7 @@
 		        </div>
 		        <div class="form-group text-center">
 		                <button type="submit" class="btn btn-success">Dodaj</button>
-				<a href="../Trumny" class="btn btn-default" role="button">Wróć</a>
+				<a href="${pageContext.request.contextPath}/Trumny" class="btn btn-default" role="button">Wróć</a>
 		 	    </div>
 		        </div>
             	</form>

@@ -14,6 +14,10 @@ public class TrumnaManager {
 	@PersistenceContext
 	EntityManager em;
 
+	public Trumna pobierzPoId(Long id) {
+		return em.find(Trumna.class, id);
+	}
+
 	public void dodaj(Trumna trumna) {
 		trumna.setId(null);
 		em.persist(trumna);

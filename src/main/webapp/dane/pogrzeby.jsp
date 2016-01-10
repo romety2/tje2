@@ -32,10 +32,10 @@
                     </tr>
                     <c:forEach var="pogrzeb" items="${pogrzeby}" varStatus="loopCounter">
                         <tr>
-                            <td>${pogrzeb.data}</td>
-                            <td>${pogrzeb.trumna.rodzaj}</td>
-                            <td>${pogrzeb.cena}</td>
-                            <td>${pogrzeb.opis}</td>
+                            <td>${pogrzeb.getData()}</td>
+                            <td>${pogrzeb.getTrumna().getRodzaj()}</td>
+                            <td>${pogrzeb.getCena()}</td>
+                            <td>${pogrzeb.getOpis()}</td>
                             <td>
                                 <a href="pogrzeby/poglad/${pogrzeb.id}">
                                     Podgląd
