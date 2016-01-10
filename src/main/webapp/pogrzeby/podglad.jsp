@@ -9,57 +9,32 @@
 </head>
 
 <body>
-<jsp:include page="elementy/menu.jsp" />
+<jsp:include page="../elementy/menu.jsp" />
 
 <div class="container">
     <div class="row">
-        <h1 class="text-center">Pogrzeby</h1>
-        <div>
-        	<button type="submit" class="btn btn-success">Dodaj</button>
-         </div>
+        <h1 class="text-center">Pogrzeb</h1>
         <br/>
 
-        <c:choose>
-            <c:when test="${pogrzeby.size() > 0}">
-                <table class="table table-striped">
-                    <tr>
-                        <th>Data</th>
-                        <th>Trumna</th>
-                        <th>Cena</th>
-                        <th>Opis</th>
-                        <th></th>
-                    </tr>
-                    <c:forEach var="pogrzeb" items="${pogrzeby}" varStatus="loopCounter">
-                        <tr>
-                            <td>${pogrzeb.data}</td>
-                            <td>${pogrzeb.trumna.rodzaj}</td>
-                            <td>${pogrzeb.cena}</td>
-                            <td>${pogrzeb.opis}</td>
-                            <td>
-                                <a href="pogladP/${message.id}">
-                                    Podgląd
-                                </a>
-                                |
-                                <a href="edytujP/${message.id}">
-                                    Edytuj
-                                </a>
-                                |
-                                <a href="usunPogrzeb/${message.id}">
-                                    Usuń
-                                </a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </table>
+        <label>Data:</label>
+        <div class="well well-sm">${pogrzebEdytowany.getData()}</div>
 
-            </c:when>
-            <c:otherwise>
-                <div class="well">Brak pogbrzebów!</div>
-            </c:otherwise>
-        </c:choose>
+        <label>Trumna:</label>
+        <div class="well well-sm">${pogrzebEdytowany.getTrumna().getRodzaj()}</div>
+
+        <label>Cena:</label>
+        <div class="well well-sm">${pogrzebEdytowany.getCena()}</div>
+
+        <label>Opis:</label>
+        <div class="well well-lg">${pogrzebEdytowany.getOpis()}</div>
+	<div class="form-group text-center">
+		                <a href="${pageContext.request.contextPath}/EdytujPogrzeb/${pogrzebEdytowany.getId()}" class="btn btn-primary" role="button">Edytuj</a>
+		                <a href="${pageContext.request.contextPath}/UsunPogrzeb/${pogrzebEdytowany.getId()}" class="btn btn-danger" role="button">Usuń</a>
+				<a href="${pageContext.request.contextPath}/Pogrzeby" class="btn btn-default" role="button">Wróć</a>
+    	</div>
     </div>
 
-    <jsp:include page="elementy/stopka.jsp" />
+    <jsp:include page="../elementy/stopka.jsp" />
 </div>
 </body>
 </html>

@@ -46,7 +46,7 @@
 				     		<c:forEach var="trumnaFK" items="${trumnyDostepne}" varStatus="loopCounter">
 						<c:choose>
 						    <c:when test="${trumnaFK.id == pogrzebEdytowany.getTrumna().getId()}">
-						    	<option value="${trumnaFK.id}" selected="selected">${trumnaFK.rodzaj}</option>
+						    	<option value="${trumnaFK.id}" selected="selected">${trumnaFK.getRodzaj()}</option>
 						    </c:when>
 						    <c:otherwise>
 							<option value="${trumnaFK.id}">${trumnaFK.rodzaj}</option>

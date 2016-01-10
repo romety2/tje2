@@ -37,14 +37,14 @@
                             <td>${pogrzeb.getCena()}</td>
                             <td>${pogrzeb.getOpis()}</td>
                             <td>
-                                <a href="pogrzeby/poglad/${pogrzeb.getId()}">
-                                    Podgląd
+				<a href="${pageContext.request.contextPath}/PodgladPogrzeb/${pogrzeb.getId()}" class="btn btn-xs btn-warning" role="button">
+					Podgląd
                                 </a>
-				<a href="${pageContext.request.contextPath}/EdytujPogrzeb/${pogrzeb.getId()}" class="btn btn-primary" role="button">
+				<a href="${pageContext.request.contextPath}/EdytujPogrzeb/${pogrzeb.getId()}" class="btn btn-xs btn-primary" role="button">
 					Edytuj
                                 </a>
-                                <a href="${pageContext.request.contextPath}/UsunPogrzeb/${pogrzeb.getId()}" class="btn btn-danger" role="button">
-                                    Usuń
+                                <a href="${pageContext.request.contextPath}/UsunPogrzeb/${pogrzeb.getId()}" class="btn btn-xs btn-danger" role="button">
+                                   	Usuń
                                 </a>
                             </td>
                         </tr>

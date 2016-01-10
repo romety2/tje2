@@ -44,7 +44,7 @@
 				<div class="col-sm-10">
 				         <select type="text" name="trumna" id="trumna" class="form-control" required>
 				     		<c:forEach var="trumnaFK" items="${trumnyDostepne}" varStatus="loopCounter">
-						    	<option value="${trumnaFK.id}">${trumnaFK.rodzaj}</option>
+						    	<option value="${trumnaFK.id}">${trumnaFK.getRodzaj()}</option>
 					    	</c:forEach>
 					</select>
 				</div>

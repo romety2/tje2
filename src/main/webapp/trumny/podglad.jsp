@@ -13,55 +13,25 @@
 
 <div class="container">
     <div class="row">
-        <h1 class="text-center">Pogrzeby</h1>
-        <div>
-        	<button type="submit" class="btn btn-success">Dodaj</button>
-         </div>
+        <h1 class="text-center">Trumna</h1>
         <br/>
 
-        <c:choose>
-            <c:when test="${pogrzeby.size() > 0}">
-                <table class="table table-striped">
-                    <tr>
-                        <th>Data</th>
-                        <th>Trumna</th>
-                        <th>Cena</th>
-                        <th>Opis</th>
-                        <th></th>
-                    </tr>
-                    <c:forEach var="pogrzeb" items="${pogrzeby}" varStatus="loopCounter">
-                        <tr>
-                            <td>${pogrzeb.data}</td>
-                            <td>${pogrzeb.trumna.rodzaj}</td>
-                            <td>${pogrzeb.cena}</td>
-                            <td>${pogrzeb.opis}</td>
-                            <td>
-                                <a href="pogladP/${message.id}">
-                                    Podgląd
-                                </a>
-                                |
-                                <a href="edytujP/${message.id}">
-                                    Edytuj
-                                </a>
-                                |
-                                <a href="usunPogrzeb/${message.id}">
-                                    Usuń
-                                </a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </table>
+        <label>Rodzaj:</label>
+        <div class="well well-sm">${trumnaEdytowana.getRodzaj()}</div>
 
-            </c:when>
-            <c:otherwise>
-                <div class="well">Brak pogbrzebów!</div>
-            </c:otherwise>
-        </c:choose>
+        <label>Cena:</label>
+        <div class="well well-sm">${trumnaEdytowana.getCena()}</div>
+
+        <label>Ilość:</label>
+        <div class="well well-sm">${trumnaEdytowana.getIlosc()}</div>
+	<div class="form-group text-center">
+		                <a href="${pageContext.request.contextPath}/EdytujTrumne/${trumnaEdytowana.getId()}" class="btn btn-primary" role="button">Edytuj</a>
+		                <a href="${pageContext.request.contextPath}/UsunTrumne/${trumnaEdytowana.getId()}" class="btn btn-danger" role="button">Usuń</a>
+				<a href="${pageContext.request.contextPath}/Trumny" class="btn btn-default" role="button">Wróć</a>
+    	</div>
     </div>
 
     <jsp:include page="../elementy/stopka.jsp" />
 </div>
-
-<jsp:include page="../elementy/skrypty.jsp" />
 </body>
 </html>
