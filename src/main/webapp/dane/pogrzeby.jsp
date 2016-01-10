@@ -40,10 +40,10 @@
                                 <a href="pogrzeby/poglad/${pogrzeb.getId()}">
                                     Podgląd
                                 </a>
-                                <a href="pogrzeby/edytuj/${pogrzeb.getId()}">
-					<a href="${pageContext.request.contextPath}/EdytujPogrzeb/${pogrzeb.getId()}" class="btn btn-primary" role="button">Edytuj</a>
+				<a href="${pageContext.request.contextPath}/EdytujPogrzeb/${pogrzeb.getId()}" class="btn btn-primary" role="button">
+					Edytuj
                                 </a>
-                                <a href="usunPogrzeb/${pogrzeb.getId()}">
+                                <a href="${pageContext.request.contextPath}/UsunPogrzeb/${pogrzeb.getId()}" class="btn btn-danger" role="button">
                                     Usuń
                                 </a>
                             </td>

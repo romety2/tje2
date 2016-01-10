@@ -38,8 +38,10 @@
                                 <a href="trumny/poglad/${trumna.getId()}">
                                     Podgląd
                                 </a>
-					<a href="${pageContext.request.contextPath}/EdytujTrumne/${trumna.getId()}"" class="btn btn-primary" role="button">Edytuj</a>
-                                <a href="usunPogrzeb/${trumna.getId()}">
+				<a href="${pageContext.request.contextPath}/EdytujTrumne/${trumna.getId()}" class="btn btn-primary" role="button">
+					Edytuj
+				</a>
+                                <a href="${pageContext.request.contextPath}/UsunTrumne/${trumna.getId()}" class="btn btn-danger" role="button">
                                     Usuń
                                 </a>
                             </td>
