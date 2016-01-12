@@ -6,8 +6,13 @@
 <head>
     	<jsp:include page="../elementy/head.jsp" />
 	<jsp:include page="../elementy/skrypty.jsp" />
+	 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://raw.githubusercontent.com/jquery/jquery-ui/master/ui/i18n/datepicker-pl.js">
+</script>
 	<script>
-		$(function()
+		$(document).ready(function()
 			{
 				$( "#data" ).datepicker
 				(
