@@ -15,7 +15,7 @@
     <div class="row">
         <h1 class="text-center">Edytuj trumnę</h1>
 
-        	<form action="${pageContext.request.contextPath}/EdytujTrumne/${trumnaEdytowana.getId()}" data-toggle="validator" method="post" class="form-horizontal">
+        	<form action="${pageContext.request.contextPath}/rest/trumna/edytuj/${trumnaEdytowana.getId()}" data-toggle="validator" method="post" class="form-horizontal">
 		        <div class="form-group">
 		            <label for="rodzaj" class="col-sm-2 control-label">Rodzaj:</label>
 

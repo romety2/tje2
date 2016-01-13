@@ -33,7 +33,7 @@
 <div class="container">
     <div class="row">
         <h1 class="text-center">Edytuj pogrzeb</h1>
-            	<form action="${pageContext.request.contextPath}/EdytujPogrzeb/${pogrzebEdytowany.getId()}"" data-toggle="validator" method="post" class="form-horizontal">
+            	<form action="${pageContext.request.contextPath}/rest/pogrzeb/edytuj/${pogrzebEdytowany.getId()}"" data-toggle="validator" method="post" class="form-horizontal">
 
 		        <div class="form-group">
 		            <label for="data" class="col-sm-2 control-label">Data:</label>

@@ -58,8 +58,6 @@ public class Trumna {
 	this.pogrzeby = pogrzeby;
 	}
 
-
-	@Size(min = 2)
 	public String getRodzaj() {
 		return rodzaj;
 	}

@@ -20,6 +20,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import javax.ws.rs.PUT;
@@ -69,9 +70,35 @@ public class PogrzebResource{
        //return Response.status(Response.Status.CREATED).build();
     }
 
+    @POST
+    @Path("/edytuj/{id}")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    public void edytuj(
+            @PathParam("id") Long id,
+            @FormParam("data") String data,
+            @FormParam("trumna") Long trumna,
+            @FormParam("cena") Double cena,
+	    @FormParam("opis") String opis)
+    {
+	Pogrzeb pogrzeb = new Pogrzeb();
+
+	pogrzeb = pm.pobierzPoId(id);
+	DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	try
+	{
+		pm.edytuj(pogrzeb, format.parse(data), tm.pobierzPoId(trumna), cena, opis);
+	}
+	catch(Exception e)
+	{
+	}
+
+       //return Response.status(Response.Status.OK).build();
+    }
+
     @DELETE
-    @Path("/usun")
-    public Response usun(@FormParam("id") long id)
+    @Path("/usun/{i}")
+    public Response usun(@PathParam("id") long id)
     {
         Pogrzeb pogrzeb = new Pogrzeb();
 

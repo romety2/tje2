@@ -14,6 +14,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import javax.ws.rs.PUT;
@@ -53,9 +54,27 @@ public class TrumnaResource{
         //return Response.status(Response.Status.CREATED).build();
     }
 
+    @POST
+    @Path("/edytuj/{id}")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    public void edytuj(
+            @PathParam("id") Long id,
+            @FormParam("rodzaj") String rodzaj,
+            @FormParam("cena") Double cena,
+            @FormParam("ilosc") Integer ilosc)
+    {
+ 	Trumna trumna = new Trumna();
+
+	trumna = tm.pobierzPoId(id);
+	tm.edytuj(trumna, rodzaj, cena, ilosc);
+
+       //return Response.status(Response.Status.OK).build();
+    }
+
     @DELETE
-    @Path("/usun")
-    public Response usun(@FormParam("id") long id)
+    @Path("/usun/{i}")
+    public Response usun(@PathParam("id") long id)
     {
         Trumna trumna = new Trumna();
 

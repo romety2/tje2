@@ -31,23 +31,4 @@ public class EdytujPogrzebServlet extends HttpServlet{
         request.setAttribute("trumnyDostepne", tm.dajDostepne());
         request.getRequestDispatcher("/pogrzeby/edytuj.jsp").forward(request, response);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Pogrzeb pogrzeb = new Pogrzeb();
-	String link = request.getPathInfo();
-	DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
-	pogrzeb =  pm.pobierzPoId(Long.parseLong(link.substring(link.lastIndexOf("/") + 1, link.length())));
-
-	try
-	{
-        pm.edytuj(pogrzeb, format.parse(request.getParameter("data")), tm.pobierzPoId(Long.parseLong(request.getParameter("trumna"))),Double.parseDouble(request.getParameter("cena")),request.getParameter("opis"));
-	}	
-	catch(Exception e)
-	{
-	}
-
- 	response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/Pogrzeby"));
-    }
 }
