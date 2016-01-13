@@ -9,10 +9,12 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import javax.ws.rs.PUT;
 
@@ -30,12 +32,15 @@ public class TrumnaResource{
     	 return tm.dajWszystkie();
     }
 
-    @PUT
+    @POST
     @Path("/dodaj")
-    public Response dodaj(
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    public void dodaj(
             @FormParam("rodzaj") String rodzaj,
             @FormParam("cena") Double cena,
-            @FormParam("ilosc") Integer ilosc){
+            @FormParam("ilosc") Integer ilosc)
+    {
 
         Trumna trumna = new Trumna();
 
@@ -44,7 +49,8 @@ public class TrumnaResource{
         trumna.setIlosc(ilosc);
 
         tm.dodaj(trumna);
-        return Response.status(Response.Status.CREATED).build();
+
+        //return Response.status(Response.Status.CREATED).build();
     }
 
     @DELETE

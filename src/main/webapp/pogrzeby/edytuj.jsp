@@ -71,7 +71,7 @@
 		        </div>
 
 		        <div class="form-group">
-		           	<label for="opis" class="col-sm-2 control-label">Opis:</label>
+		           	<label for="opis" class="col-sm-2 control-label" min="2">Opis:</label>
 
 		            	<div class="col-sm-10">
 		                	<input type="text" name="opis" id="opis" class="form-control" value="${pogrzebEdytowany.getOpis()}">

@@ -21,16 +21,4 @@ public class DodajTrumneServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/trumny/dodaj.jsp").forward(request, response);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Trumna trumna = new Trumna();
-
-        trumna.setRodzaj(request.getParameter("rodzaj"));
-        trumna.setCena(Double.parseDouble(request.getParameter("cena")));
-        trumna.setIlosc(Integer.parseInt(request.getParameter("ilosc")));
-
-        tm.dodaj(trumna);
- 	response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/Trumny"));
-    }
 }

@@ -1,7 +1,9 @@
 package com.zakladPogrzebowy.rest;
 
 import java.util.List;
-import java.util.Date;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import com.zakladPogrzebowy.domena.Pogrzeb;
 import com.zakladPogrzebowy.domena.Trumna;
@@ -13,10 +15,12 @@ import javax.ejb.Stateless;
 import javax.servlet.http.HttpServlet;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import javax.ws.rs.PUT;
 
@@ -26,6 +30,8 @@ import javax.ws.rs.PUT;
 public class PogrzebResource{
     @EJB
     private PogrzebManager pm;
+    @EJB
+    private TrumnaManager tm;
 
     @GET
     @Path("/dajWszystkie")
@@ -34,24 +40,33 @@ public class PogrzebResource{
     	 return pm.dajWszystkie();
     }
 
-    @PUT
+    @POST
     @Path("/dodaj")
-    @Produces("text/plain") 
-    public Response dodaj(
-            @FormParam("data") Date data,
-            @FormParam("trumna") Trumna trumna,
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    public void dodaj(
+            @FormParam("data") String data,
+            @FormParam("trumna") Long trumna,
             @FormParam("cena") Double cena,
-	    @FormParam("opis") String opis) {
+	    @FormParam("opis") String opis)
+    {
+	Pogrzeb pogrzeb = new Pogrzeb();
 
-        Pogrzeb pogrzeb = new Pogrzeb();
+	DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	try
+	{
+		pogrzeb.setData(format.parse(data));
+	}
+	catch(Exception e)
+	{
+	}
+	pogrzeb.setTrumna(tm.pobierzPoId(trumna));
+	pogrzeb.setCena(cena);
+	pogrzeb.setOpis(opis);
 
-        pogrzeb.setData(data);
-        pogrzeb.setTrumna(trumna);
-        pogrzeb.setCena(cena);
-        pogrzeb.setOpis(opis);
+	pm.dodaj(pogrzeb);
 
-        pm.dodaj(pogrzeb);
-        return Response.status(Response.Status.CREATED).build();
+       //return Response.status(Response.Status.CREATED).build();
     }
 
     @DELETE

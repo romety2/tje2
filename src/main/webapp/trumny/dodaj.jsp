@@ -15,12 +15,12 @@
     <div class="row">
         <h1 class="text-center">Dodaj trumnę</h1>
 
-        	<form action="${pageContext.request.contextPath}/DodajTrumne" data-toggle="validator" method="post" class="form-horizontal">
+        	<form action="${pageContext.request.contextPath}/rest/trumna/dodaj" data-toggle="validator" method="post" class="form-horizontal">
 		        <div class="form-group">
 		            <label for="rodzaj" class="col-sm-2 control-label">Rodzaj:</label>
 
 		            <div class="col-sm-10">
-		                <input type="text" name="rodzaj" id="rodzaj" class="form-control" required>
+		                <input type="text" name="rodzaj" id="rodzaj" class="form-control" data-minlength="2" required>
 		            </div>
 		        </div>
 

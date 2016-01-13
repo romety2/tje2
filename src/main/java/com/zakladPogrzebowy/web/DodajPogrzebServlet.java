@@ -30,24 +30,4 @@ public class DodajPogrzebServlet extends HttpServlet{
         request.getRequestDispatcher("/pogrzeby/dodaj.jsp").forward(request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Pogrzeb pogrzeb = new Pogrzeb();
-
-	DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
-	try
-	{
-        	pogrzeb.setData(format.parse(request.getParameter("data")));
-	}
-	catch(Exception e)
-	{
-	}
-        pogrzeb.setTrumna(tm.pobierzPoId(Long.parseLong(request.getParameter("trumna"))));
-        pogrzeb.setCena(Double.parseDouble(request.getParameter("cena")));
-        pogrzeb.setOpis(request.getParameter("opis"));
-        pm.dodaj(pogrzeb);
-
- 	response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/Pogrzeby"));
-    }
 }

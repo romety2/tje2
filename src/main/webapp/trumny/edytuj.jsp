@@ -20,7 +20,7 @@
 		            <label for="rodzaj" class="col-sm-2 control-label">Rodzaj:</label>
 
 		            <div class="col-sm-10">
-		                <input type="text" name="rodzaj" id="rodzaj" class="form-control" value="${trumnaEdytowana.getRodzaj()}" required>
+		                <input type="text" name="rodzaj" id="rodzaj" class="form-control" value="${trumnaEdytowana.getRodzaj()}" data-minlength="2" required>
 		            </div>
 		        </div>
 

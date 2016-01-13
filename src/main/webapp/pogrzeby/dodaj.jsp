@@ -34,7 +34,7 @@
 <div class="container">
     <div class="row">
         <h1 class="text-center">Dodaj pogrzeb</h1>
-            	<form action="${pageContext.request.contextPath}/DodajPogrzeb" data-toggle="validator" method="post" class="form-horizontal">
+            	<form action="${pageContext.request.contextPath}/rest/pogrzeb/dodaj/" data-toggle="validator" method="post" class="form-horizontal">
 
 		        <div class="form-group">
 		            <label for="data" class="col-sm-2 control-label">Data:</label>
@@ -67,7 +67,7 @@
 		           	<label for="opis" class="col-sm-2 control-label">Opis:</label>
 
 		            	<div class="col-sm-10">
-		                	<input type="text" name="opis" id="opis" class="form-control"/>
+		                	<input type="text" name="opis" min="2" id="opis" class="form-control"/>
 		            	</div>
 		        </div>
 		        <div class="form-group text-center">
