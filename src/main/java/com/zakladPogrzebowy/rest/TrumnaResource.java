@@ -72,15 +72,15 @@ public class TrumnaResource{
        //return Response.status(Response.Status.OK).build();
     }
 
-    @DELETE
-    @Path("/usun/{i}")
-    public Response usun(@PathParam("id") long id)
+    @GET
+    @Path("/usun/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void usun(@PathParam("id") long id)
     {
         Trumna trumna = new Trumna();
 
-        trumna.setId(id);
-        tm.usun(trumna);
-        return Response.status(Response.Status.OK).build();
+        tm.usun(tm.pobierzPoId(id));
+        //return Response.status(Response.Status.OK).build();
     }
 
 }

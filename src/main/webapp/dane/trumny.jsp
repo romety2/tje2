@@ -41,7 +41,7 @@
 				<a href="${pageContext.request.contextPath}/EdytujTrumne/${trumna.getId()}" class="btn btn-xs btn-primary" role="button">
 					Edytuj
 				</a>
-                                <a href="${pageContext.request.contextPath}/UsunTrumne/${trumna.getId()}" class="btn btn-xs btn-danger" role="button">
+                                <a href="${pageContext.request.contextPath}/rest/trumna/usun/${trumna.getId()}" class="btn btn-xs btn-danger" role="button">
                                     	Usuń
                                 </a>
                             </td>

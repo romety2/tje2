@@ -43,7 +43,7 @@
 				<a href="${pageContext.request.contextPath}/EdytujPogrzeb/${pogrzeb.getId()}" class="btn btn-xs btn-primary" role="button">
 					Edytuj
                                 </a>
-                                <a href="${pageContext.request.contextPath}/UsunPogrzeb/${pogrzeb.getId()}" class="btn btn-xs btn-danger" role="button">
+                                <a href="${pageContext.request.contextPath}/rest/pogrzeb/usun/${pogrzeb.getId()}" class="btn btn-xs btn-danger" role="button">
                                    	Usuń
                                 </a>
                             </td>

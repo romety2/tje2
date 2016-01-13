@@ -96,15 +96,15 @@ public class PogrzebResource{
        //return Response.status(Response.Status.OK).build();
     }
 
-    @DELETE
-    @Path("/usun/{i}")
-    public Response usun(@PathParam("id") long id)
+    @GET
+    @Path("/usun/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void usun(@PathParam("id") long id)
     {
         Pogrzeb pogrzeb = new Pogrzeb();
 
-        pogrzeb.setId(id);
-        pm.usun(pogrzeb);
-        return Response.status(Response.Status.OK).build();
+        pm.usun(pm.pobierzPoId(id));
+        //return Response.status(Response.Status.OK).build();
     }
 
 }
