@@ -6,6 +6,19 @@
 <head>
     	<jsp:include page="../elementy/head.jsp" />
 	<jsp:include page="../elementy/skrypty.jsp" />
+	<script>
+		function usun(id)
+				{	
+					$.ajax
+					(
+						{
+							url: '${pageContext.request.contextPath}/rest/trumna/usun/'+id,
+							type: 'DELETE',
+							success: function() { document.location.reload(true);}
+						}	
+					);
+				}
+	</script>
 </head>
 
 <body>
@@ -41,7 +54,7 @@
 				<a href="${pageContext.request.contextPath}/EdytujTrumne/${trumna.getId()}" class="btn btn-xs btn-primary" role="button">
 					Edytuj
 				</a>
-                                <a href="${pageContext.request.contextPath}/rest/trumna/usun/${trumna.getId()}?q=<%= Math.random() %>" class="btn btn-xs btn-danger" role="button">
+                                <a id="${trumna.getId()}" onClick="usun(${trumna.getId()})" class="btn btn-xs btn-danger" role="button">
                                     	Usuń
                                 </a>
                             </td>

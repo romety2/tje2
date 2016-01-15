@@ -6,6 +6,33 @@
 <head>
     	<jsp:include page="../elementy/head.jsp" />
 	<jsp:include page="../elementy/skrypty.jsp" />
+	<script>
+		$(document).ready(function()
+			{
+				$( "#edytuj" ).on('click', function(e)
+					{	
+						e.preventDefault();
+						$.ajax
+						(
+						{
+						    url: '${pageContext.request.contextPath}/rest/trumna/edytuj/${trumnaEdytowana.getId()}',
+						    type: 'PUT',
+						    data:
+							{
+								rodzaj: document.getElementById('rodzaj').value,
+								cena: document.getElementById('cena').value,
+								ilosc: document.getElementById('ilosc').value
+								
+							},
+						    success: function() { document.location.replace("${pageContext.request.contextPath}/Trumny"); },
+ 						    error: function() { alert("Nieprawidłowo wprowadzono dane!"); }
+						}	
+						);
+					}
+				);
+			}
+		);
+	</script>
 </head>
 
 <body>
@@ -40,7 +67,7 @@
 		            </div>
 		        </div>
 		        <div class="form-group text-center">
-		                <button type="submit" class="btn btn-primary">Edytuj</button>
+		                <button id="edytuj" type="submit" class="btn btn-primary">Edytuj</button>
 				<a href="${pageContext.request.contextPath}/Trumny" class="btn btn-default" role="button">Wróć</a>
 		 	    </div>
 		        </div>
