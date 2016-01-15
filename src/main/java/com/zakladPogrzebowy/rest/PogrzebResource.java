@@ -45,7 +45,7 @@ public class PogrzebResource{
     @Path("/dodaj")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    public void dodaj(
+    public Pogrzeb dodaj(
             @FormParam("data") String data,
             @FormParam("trumna") Long trumna,
             @FormParam("cena") Double cena,
@@ -67,14 +67,14 @@ public class PogrzebResource{
 
 	pm.dodaj(pogrzeb);
 
-       //return Response.status(Response.Status.CREATED).build();
+       return pm.pobierzPoId(pogrzeb.getId());
     }
 
-    @POST
+    @PUT
     @Path("/edytuj/{id}")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    public void edytuj(
+    public Pogrzeb edytuj(
             @PathParam("id") Long id,
             @FormParam("data") String data,
             @FormParam("trumna") Long trumna,
@@ -93,10 +93,10 @@ public class PogrzebResource{
 	{
 	}
 
-       //return Response.status(Response.Status.OK).build();
+       return pogrzeb;
     }
 
-    @GET
+    @DELETE
     @Path("/usun/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public void usun(@PathParam("id") long id)
@@ -104,7 +104,6 @@ public class PogrzebResource{
         Pogrzeb pogrzeb = new Pogrzeb();
 
         pm.usun(pm.pobierzPoId(id));
-        //return Response.status(Response.Status.OK).build();
     }
 
 }

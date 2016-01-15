@@ -6,11 +6,6 @@
 <head>
     	<jsp:include page="../elementy/head.jsp" />
 	<jsp:include page="../elementy/skrypty.jsp" />
-	 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script src="https://raw.githubusercontent.com/jquery/jquery-ui/master/ui/i18n/datepicker-pl.js">
-</script>
 	<script>
 		$(document).ready(function()
 			{
@@ -26,6 +21,34 @@
 			}
 		);
 	</script>
+	<script>
+		$(document).ready(function()
+			{
+				$( "#dodaj" ).on('click', function(e)
+					{	
+						e.preventDefault();
+						$.ajax
+						(
+						{
+						    url: '${pageContext.request.contextPath}/rest/pogrzeb/dodaj',
+						    type: 'POST',
+						    data:
+							{
+								data: document.getElementById('data').value,
+								trumna: document.getElementById('trumna').value,
+								cena: document.getElementById('cena').value,
+								opis: document.getElementById('opis').value
+								
+							},
+						    success: function() { document.location.replace("${pageContext.request.contextPath}/Pogrzeby"); },
+ 						    error: function() { alert("Nieprawidłowo wprowadzono dane!"); }
+						}		
+						);
+					}
+				);
+			}
+		);
+	</script>
 </head>
 
 <body>
@@ -34,7 +57,7 @@
 <div class="container">
     <div class="row">
         <h1 class="text-center">Dodaj pogrzeb</h1>
-            	<form action="${pageContext.request.contextPath}/rest/pogrzeb/dodaj/" data-toggle="validator" method="post" class="form-horizontal">
+            	<form data-toggle="validator" method="post" class="form-horizontal">
 
 		        <div class="form-group">
 		            <label for="data" class="col-sm-2 control-label">Data:</label>
@@ -71,7 +94,7 @@
 		            	</div>
 		        </div>
 		        <div class="form-group text-center">
-		                <button type="submit" class="btn btn-success">Dodaj</button>
+		                <button id="dodaj" type="submit" class="btn btn-success">Dodaj</button>
 				<a href="${pageContext.request.contextPath}/Pogrzeby" class="btn btn-default" role="button">Wróć</a>
 		        </div>
 

@@ -21,6 +21,7 @@ public class TrumnaManager {
 	public void dodaj(Trumna trumna) {
 		trumna.setId(null);
 		em.persist(trumna);
+        	em.flush();
 	}
 
 	public void edytuj(Trumna trumna, String rodzaj, Double cena, Integer ilosc) {

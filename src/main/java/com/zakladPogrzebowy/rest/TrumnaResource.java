@@ -54,7 +54,7 @@ public class TrumnaResource{
         //return Response.status(Response.Status.CREATED).build();
     }
 
-    @POST
+    @PUT
     @Path("/edytuj/{id}")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
@@ -72,7 +72,7 @@ public class TrumnaResource{
        //return Response.status(Response.Status.OK).build();
     }
 
-    @GET
+    @DELETE
     @Path("/usun/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public void usun(@PathParam("id") long id)

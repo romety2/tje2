@@ -6,6 +6,19 @@
 <head>
     	<jsp:include page="../elementy/head.jsp" />
 	<jsp:include page="../elementy/skrypty.jsp" />
+	<script>
+		function usun(id)
+				{	
+					$.ajax
+					(
+						{
+							url: '${pageContext.request.contextPath}/rest/pogrzeb/usun/'+id,
+							type: 'DELETE',
+							success: function() { document.location.reload(true);}
+						}	
+					);
+				}
+	</script>
 </head>
 
 <body>
@@ -43,9 +56,9 @@
 				<a href="${pageContext.request.contextPath}/EdytujPogrzeb/${pogrzeb.getId()}" class="btn btn-xs btn-primary" role="button">
 					Edytuj
                                 </a>
-                                <a href="${pageContext.request.contextPath}/rest/pogrzeb/usun/${pogrzeb.getId()}" class="btn btn-xs btn-danger" role="button">
+                                <button id="${pogrzeb.getId()}" onClick="usun(${pogrzeb.getId()})" type="submit" class="btn btn-xs btn-danger">
                                    	Usuń
-                                </a>
+                                </button>
                             </td>
                         </tr>
                     </c:forEach>

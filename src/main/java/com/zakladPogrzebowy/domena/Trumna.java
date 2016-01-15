@@ -1,5 +1,7 @@
 package com.zakladPogrzebowy.domena;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +53,7 @@ public class Trumna {
 
 
 	@OneToMany(mappedBy = "trumna", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
 	public List<Pogrzeb> getPogrzeby() {
 	return pogrzeby;
 	}
