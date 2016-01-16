@@ -6,20 +6,24 @@
 <head>
     	<jsp:include page="../elementy/head.jsp" />
 	<jsp:include page="../elementy/skrypty.jsp" />
-	<script>	
-		$.ajax
-			(
-				{
-					url: '${pageContext.request.contextPath}/rest/pogrzeb/podglad/${pogrzebId}',
-					type: 'GET',
-					success: function(w) { 
-									document.getElementById('pole1').innerHTML = w.data;
-									document.getElementById('pole2').innerHTML = w.trumna.rodzaj;
-									document.getElementById('pole3').innerHTML = w.cena;
-									document.getElementById('pole4').innerHTML = w.ospis;
-								}
-				}	
-			);
+	<script>
+		$(document).ready(function()
+			{	
+			$.ajax
+				(
+					{
+						url: '${pageContext.request.contextPath}/rest/pogrzeb/podglad/${pogrzebId}',
+						type: 'GET',
+						success: function(w) { 
+										document.getElementById('pole1').innerHTML = w.data;
+										document.getElementById('pole2').innerHTML = w.trumna.rodzaj;
+										document.getElementById('pole3').innerHTML = w.cena;
+										document.getElementById('pole4').innerHTML = w.opis;
+									}
+					}	
+				);
+			}
+		);
 	</script>
 	<script>
 		$(document).ready(function()

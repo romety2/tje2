@@ -17,7 +17,7 @@ public class DajTrumnyServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("trumny", tm.dajWszystkie());
+        //request.setAttribute("trumny", tm.dajWszystkie());
         request.getRequestDispatcher("dane/trumny.jsp").forward(request, response);
     }
 }

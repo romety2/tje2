@@ -7,6 +7,40 @@
     	<jsp:include page="../elementy/head.jsp" />
 	<jsp:include page="../elementy/skrypty.jsp" />
 	<script>
+		$(document).ready(function()
+				{		
+				$.ajax
+					(
+						{
+							url: '${pageContext.request.contextPath}/rest/pogrzeb/dajWszystkie',
+							type: 'GET',
+							success: function(dane)
+							{ 
+								var d = dane.length;
+								var table = document.getElementById("tabela");
+								for (var i = 0; i < d; i++)
+								{
+
+									    tr = $('<tr/>');
+									    tr.append("<td>"+dane[i].data+"</td>");
+									    tr.append("<td>"+dane[i].trumna.rodzaj+"</td>");
+									    tr.append("<td>"+dane[i].cena+"</td>");
+									    tr.append("<td>"+dane[i].opis+"</td>");
+									    td = $('<td/>');
+									    td.append(
+"<a href='${pageContext.request.contextPath}/PodgladPogrzeb/"+dane[i].id+"' class='btn btn-xs btn-warning' role='button'> Podgląd </a> "+
+"<a href='${pageContext.request.contextPath}/EdytujPogrzeb/"+dane[i].id+"' class='btn btn-xs btn-primary' role='button'>Edytuj</a> "+
+"<button id="+dane[i].id+" onClick='usun("+dane[i].id+")' type='submit' class='btn btn-xs btn-danger'>Usuń</button>");
+									    tr.append(td);
+									    $(table).append(tr);
+								}
+							}
+						}	
+					);
+				}
+			);
+	</script>
+	<script>
 		function usun(id)
 				{	
 					$.ajax
@@ -33,41 +67,15 @@
          </div>
         <br/>
 
-        <c:choose>
-            <c:when test="${pogrzeby.size() > 0}">
-                <table class="table table-striped">
-                    <tr>
-                        <th>Data</th>
-                        <th>Trumna</th>
-                        <th>Cena</th>
-                        <th>Opis</th>
-                        <th></th>
-                    </tr>
-                    <c:forEach var="pogrzeb" items="${pogrzeby}" varStatus="loopCounter">
-                        <tr>
-                            <td>${pogrzeb.getData()}</td>
-                            <td>${pogrzeb.getTrumna().getRodzaj()}</td>
-                            <td>${pogrzeb.getCena()}</td>
-                            <td>${pogrzeb.getOpis()}</td>
-                            <td>
-				<a href="${pageContext.request.contextPath}/PodgladPogrzeb/${pogrzeb.getId()}" class="btn btn-xs btn-warning" role="button">
-					Podgląd
-                                </a>
-				<a href="${pageContext.request.contextPath}/EdytujPogrzeb/${pogrzeb.getId()}" class="btn btn-xs btn-primary" role="button">
-					Edytuj
-                                </a>
-                                <button id="${pogrzeb.getId()}" onClick="usun(${pogrzeb.getId()})" type="submit" class="btn btn-xs btn-danger">
-                                   	Usuń
-                                </button>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </table>
-            </c:when>
-            <c:otherwise>
-                <div class="well">Brak pogbrzebów!</div>
-            </c:otherwise>
-        </c:choose>
+        <table id="tabela" class="table table-striped">
+               <tr>
+                   <th>Data</th>
+                   <th>Trumna</th>
+                   <th>Cena</th>
+                   <th>Opis</th>
+                   <th></th>
+              </tr>
+	</table>
     </div>
 
     <jsp:include page="../elementy/stopka.jsp" />

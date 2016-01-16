@@ -17,7 +17,7 @@ public class DajPogrzebyServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("pogrzeby", pm.dajWszystkie());
+        //request.setAttribute("pogrzeby", pm.dajWszystkie());
         request.getRequestDispatcher("dane/pogrzeby.jsp").forward(request, response);
     }
 }
