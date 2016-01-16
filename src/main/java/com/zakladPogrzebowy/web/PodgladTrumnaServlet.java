@@ -20,7 +20,7 @@ public class PodgladTrumnaServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	String link = request.getPathInfo();
-        request.setAttribute("trumnaEdytowana", tm.pobierzPoId(Long.parseLong(link.substring(link.lastIndexOf("/") + 1, link.length()))));
+        request.setAttribute("trumnaId", link.substring(link.lastIndexOf("/") + 1, link.length()));
         request.getRequestDispatcher("/trumny/podglad.jsp").forward(request, response);
     }
 }

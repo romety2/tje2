@@ -35,9 +35,8 @@ public class TrumnaResource{
 
     @POST
     @Path("/dodaj")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    public void dodaj(
+    public Trumna dodaj(
             @FormParam("rodzaj") String rodzaj,
             @FormParam("cena") Double cena,
             @FormParam("ilosc") Integer ilosc)
@@ -51,14 +50,13 @@ public class TrumnaResource{
 
         tm.dodaj(trumna);
 
-        //return Response.status(Response.Status.CREATED).build();
+        return trumna;
     }
 
     @PUT
     @Path("/edytuj/{id}")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    public void edytuj(
+    public Trumna edytuj(
             @PathParam("id") Long id,
             @FormParam("rodzaj") String rodzaj,
             @FormParam("cena") Double cena,
@@ -69,7 +67,7 @@ public class TrumnaResource{
 	trumna = tm.pobierzPoId(id);
 	tm.edytuj(trumna, rodzaj, cena, ilosc);
 
-       //return Response.status(Response.Status.OK).build();
+        return trumna;
     }
 
     @DELETE
@@ -80,7 +78,13 @@ public class TrumnaResource{
         Trumna trumna = new Trumna();
 
         tm.usun(tm.pobierzPoId(id));
-        //return Response.status(Response.Status.OK).build();
+    }
+
+    @GET
+    @Path("/podglad/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Trumna podglad(@PathParam("id") long id) {
+    	 return tm.pobierzPoId(id);
     }
 
 }

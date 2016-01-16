@@ -43,7 +43,6 @@ public class PogrzebResource{
 
     @POST
     @Path("/dodaj")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
     public Pogrzeb dodaj(
             @FormParam("data") String data,
@@ -67,12 +66,11 @@ public class PogrzebResource{
 
 	pm.dodaj(pogrzeb);
 
-       return pm.pobierzPoId(pogrzeb.getId());
+       return pogrzeb;
     }
 
     @PUT
     @Path("/edytuj/{id}")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
     public Pogrzeb edytuj(
             @PathParam("id") Long id,
@@ -104,6 +102,13 @@ public class PogrzebResource{
         Pogrzeb pogrzeb = new Pogrzeb();
 
         pm.usun(pm.pobierzPoId(id));
+    }
+
+    @GET
+    @Path("/podglad/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Pogrzeb podglad(@PathParam("id") long id) {
+    	 return pm.pobierzPoId(id);
     }
 
 }

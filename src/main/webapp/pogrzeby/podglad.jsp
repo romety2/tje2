@@ -6,6 +6,40 @@
 <head>
     	<jsp:include page="../elementy/head.jsp" />
 	<jsp:include page="../elementy/skrypty.jsp" />
+	<script>	
+		$.ajax
+			(
+				{
+					url: '${pageContext.request.contextPath}/rest/pogrzeb/podglad/${pogrzebId}',
+					type: 'GET',
+					success: function(w) { 
+									document.getElementById("pole1").innerHTML = w.data;
+									document.getElementById("pole2").innerHTML = w.trumna.rodzaj;
+									document.getElementById("pole3").innerHTML = w.cena;
+									document.getElementById("pole4").innerHTML = w.opis;
+								}
+				}	
+			);
+	</script>
+	<script>
+		$(document).ready(function()
+			{
+				$( "#usun" ).on('click', function(e)
+					{	
+						e.preventDefault();
+						$.ajax
+						(
+						{
+						    url: '${pageContext.request.contextPath}/rest/trumna/usun/${pogrzebId}',
+						    type: 'DELETE',
+						    success: function() { document.location.replace("${pageContext.request.contextPath}/Pogrzeby"); }
+						}	
+						);
+					}
+				);
+			}
+		);
+	</script>
 </head>
 
 <body>
@@ -17,19 +51,19 @@
         <br/>
 
         <label>Data:</label>
-        <div class="well well-sm">${pogrzebEdytowany.getData()}</div>
+        <div id = "pole1" class="well well-sm"></div>
 
         <label>Trumna:</label>
-        <div class="well well-sm">${pogrzebEdytowany.getTrumna().getRodzaj()}</div>
+        <div id = "pole2" class="well well-sm"></div>
 
         <label>Cena:</label>
-        <div class="well well-sm">${pogrzebEdytowany.getCena()}</div>
+        <div id = "pole3" class="well well-sm"></div>
 
         <label>Opis:</label>
-        <div class="well well-lg">${pogrzebEdytowany.getOpis()}</div>
+        <div id = "pole4" class="well well-lg"></div>
 	<div class="form-group text-center">
-		                <a href="${pageContext.request.contextPath}/EdytujPogrzeb/${pogrzebEdytowany.getId()}" class="btn btn-primary" role="button">Edytuj</a>
-		                <a href="${pageContext.request.contextPath}/UsunPogrzeb/${pogrzebEdytowany.getId()}" class="btn btn-danger" role="button">Usuń</a>
+		                <a href="${pageContext.request.contextPath}/EdytujPogrzeb/${pogrzebId}" class="btn btn-primary" role="button">Edytuj</a>
+		                <button id="usun" type="submit" class="btn btn-danger">Usuń</button>
 				<a href="${pageContext.request.contextPath}/Pogrzeby" class="btn btn-default" role="button">Wróć</a>
     	</div>
     </div>

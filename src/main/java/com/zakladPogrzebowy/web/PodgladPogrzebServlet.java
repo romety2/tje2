@@ -23,7 +23,7 @@ public class PodgladPogrzebServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	String link = request.getPathInfo();
-        request.setAttribute("pogrzebEdytowany", pm.pobierzPoId(Long.parseLong(link.substring(link.lastIndexOf("/") + 1, link.length()))));
+        request.setAttribute("pogrzebId", link.substring(link.lastIndexOf("/") + 1, link.length()));
         request.getRequestDispatcher("/pogrzeby/podglad.jsp").forward(request, response);
     }
 }
