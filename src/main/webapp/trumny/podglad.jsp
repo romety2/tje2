@@ -13,9 +13,9 @@
 					url: '${pageContext.request.contextPath}/rest/trumna/podglad/${trumnaId}',
 					type: 'GET',
 					success: function(w) { 
-									document.getElementById("pole1").innerHTML = w.rodzaj;
-									document.getElementById("pole2").innerHTML = w.cena;
-									document.getElementById("pole3").innerHTML = w.ilosc;
+									document.getElementById('pole1').innerHTML = w.rodzaj;
+									document.getElementById('pole2').innerHTML = w.cena;
+									document.getElementById('pole3').innerHTML = w.ilosc;
 								}
 				}	
 			);

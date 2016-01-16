@@ -13,10 +13,10 @@
 					url: '${pageContext.request.contextPath}/rest/pogrzeb/podglad/${pogrzebId}',
 					type: 'GET',
 					success: function(w) { 
-									document.getElementById("pole1").innerHTML = w.data;
-									document.getElementById("pole2").innerHTML = w.trumna.rodzaj;
-									document.getElementById("pole3").innerHTML = w.cena;
-									document.getElementById("pole4").innerHTML = w.opis;
+									document.getElementById('pole1').innerHTML = w.data;
+									document.getElementById('pole2').innerHTML = w.trumna.rodzaj;
+									document.getElementById('pole3').innerHTML = w.cena;
+									document.getElementById('pole4').innerHTML = w.ospis;
 								}
 				}	
 			);
